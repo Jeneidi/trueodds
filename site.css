@@ -1,0 +1,150 @@
+/* TrueOdds custom silver palette and project-specific presentation. */
+:root {
+  color-scheme: dark;
+  --color-teal: #111923;
+  --color-booth: #1b2633;
+  --color-rule: #344250;
+  --rule-hover: #526171;
+  --color-tungsten: #d0d7e2;
+  --accent-hover: #e2e7ee;
+  --color-ivory: #f3f6fa;
+  --color-haze: #a9b5c1;
+  --deep: #0b1118;
+  --mid: #151f2c;
+  --low: #0e151e;
+  --glow: 83 103 128;
+  --shade: 12 20 31;
+  --panel: #0d141d;
+  --paper: var(--color-teal);
+  --card: var(--color-booth);
+  --ink: var(--color-ivory);
+  --muted: var(--color-haze);
+  --hairline: var(--color-rule);
+  --primary: var(--color-tungsten);
+  --primary-soft: color-mix(in oklab, var(--color-tungsten) 12%, var(--color-teal));
+  --secondary: var(--color-haze);
+  --secondary-soft: color-mix(in oklab, var(--color-haze) 12%, var(--color-teal));
+  --reference: var(--color-haze);
+  --focus: var(--color-tungsten);
+  --shadow: var(--deep);
+  --font-ui: var(--font-sans);
+  --max-width: 76rem;
+}
+
+body { overflow-x: hidden; }
+main { min-width: 0; }
+.hero .display { max-width: 10ch; }
+.lab-heading { max-width: 48rem; }
+.analysis-shell { margin-top: 2rem; }
+
+.analysis-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--color-rule);
+  border-radius: var(--r);
+  background: var(--color-booth);
+}
+
+.control-field { min-width: 0; }
+.control-field > label,
+.control-field > legend { display: block; margin-bottom: 0.5rem; color: var(--color-haze); font-size: 0.8125rem; font-weight: 600; }
+.control-field output { float: right; color: var(--color-ivory); font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+fieldset { min-inline-size: 0; border: 0; }
+select.control,
+input.control[type="number"] { width: 100%; min-height: 54px; }
+input.control[type="range"] { width: 100%; min-height: 54px; padding: 0; accent-color: var(--color-tungsten); cursor: pointer; }
+
+.segmented { display: grid; grid-template-columns: 1fr 1fr; }
+.segmented label { position: relative; cursor: pointer; }
+.segmented input { position: absolute; inline-size: 1px; block-size: 1px; opacity: 0; }
+.segmented span { display: grid; min-height: 54px; place-items: center; border: 1px solid var(--color-rule); color: var(--color-haze); font-size: 0.875rem; text-align: center; }
+.segmented label + label span { border-inline-start: 0; }
+.segmented input:checked + span { border-color: var(--color-tungsten); background: color-mix(in oklab, var(--color-tungsten) 12%, var(--color-booth)); color: var(--color-tungsten); }
+.segmented input:focus-visible + span { outline: 2px solid var(--color-tungsten); outline-offset: 3px; }
+
+.status { min-height: 1.6rem; margin-top: 1rem; color: var(--color-haze); font-size: 0.875rem; }
+.status.error { color: var(--color-alert); }
+
+.fit-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 1rem; border-block: 1px solid var(--color-rule); }
+.fit-strip > div { display: flex; min-width: 0; flex-direction: column; gap: 0.25rem; padding: 0.9rem 1rem; border-inline-end: 1px solid var(--color-rule); }
+.fit-strip > div:first-child { padding-inline-start: 0; }
+.fit-strip > div:last-child { border-inline-end: 0; }
+.fit-strip span { color: var(--color-haze); font-size: 0.75rem; }
+.fit-strip strong { overflow: hidden; font-family: var(--font-mono); font-size: 0.875rem; font-weight: 400; text-overflow: ellipsis; }
+
+.analysis-block { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-rule); }
+.analysis-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; }
+.analysis-head h3 { margin-top: 0.25rem; }
+.figure-number { color: var(--color-tungsten); font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.annotation { max-width: 52rem; margin-top: 0.5rem; color: var(--color-haze); font-size: 0.9375rem; }
+
+.legend { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.65rem 1rem; color: var(--color-haze); font-size: 0.75rem; }
+.legend li { display: flex; align-items: center; gap: 0.4rem; }
+.swatch { display: inline-block; width: 1.1rem; height: 0.2rem; background: var(--color-ivory); }
+.swatch.temperature { background: var(--color-tungsten); }
+.swatch.isotonic { background: var(--color-haze); }
+.swatch.reference { height: 0; border-top: 1px dashed var(--color-haze); background: transparent; }
+
+.chart { display: block; width: 100%; height: auto; min-height: 22rem; margin-top: 1.25rem; border: 1px solid var(--color-rule); border-radius: var(--r); background: var(--panel); }
+.chart text { fill: var(--color-haze); font-family: var(--font-sans); font-size: 12px; }
+.chart .svg-number { font-family: var(--font-mono); font-size: 11px; font-variant-numeric: tabular-nums; }
+details { margin-top: 1rem; border-bottom: 1px solid var(--color-rule); }
+summary { min-height: 44px; padding-block: 0.65rem; color: var(--color-tungsten); cursor: pointer; font-size: 0.875rem; font-weight: 600; }
+.table-scroll { width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; }
+
+.data-table { width: 100%; min-width: 44rem; border-collapse: collapse; color: var(--color-ivory); font-size: 0.8125rem; }
+.data-table caption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.data-table th,
+.data-table td { padding: 0.7rem 0.75rem; border-bottom: 1px solid var(--color-rule); text-align: right; white-space: nowrap; }
+.data-table th { color: var(--color-haze); font-weight: 500; vertical-align: bottom; }
+.data-table th:first-child,
+.data-table td:first-child { text-align: left; }
+.data-table tbody tr:hover { background: color-mix(in oklab, var(--color-ivory) 4%, transparent); }
+.metrics-table { min-width: 51rem; }
+.delta-better { color: var(--color-tungsten); }
+.delta-worse { color: var(--color-alert); }
+
+.cost-controls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; align-items: end; max-width: 48rem; margin: 1.5rem 0; }
+.threshold-readout { display: flex; min-height: 54px; flex-direction: column; justify-content: center; padding: 0.6rem 1rem; border: 1px solid var(--color-rule); border-radius: var(--r); background: var(--color-booth); }
+.threshold-readout span { color: var(--color-haze); font-size: 0.75rem; }
+.threshold-readout strong { font-family: var(--font-mono); font-size: 1.05rem; font-weight: 400; }
+
+.method-list { margin-top: 1rem; }
+.method-list article { display: grid; grid-template-columns: minmax(12rem, 0.34fr) 1fr; gap: 2rem; padding: 1.5rem 0; border-top: 1px solid var(--color-rule); }
+.method-list article:last-child { border-bottom: 1px solid var(--color-rule); }
+.method-list p { color: var(--color-haze); }
+.method-list code,
+.method-list var,
+#data code { color: var(--color-ivory); font-family: var(--font-mono); font-style: normal; font-size: 0.88em; }
+
+.limitations-list { display: grid; gap: 0.9rem; margin-top: 1rem; color: var(--color-haze); }
+.limitations-list li { padding-inline-start: 1.25rem; border-inline-start: 2px solid var(--color-tungsten); }
+.data-copy { display: grid; gap: 1rem; }
+.data-copy p { color: var(--color-haze); }
+.data-copy a { color: var(--color-tungsten); text-decoration: underline; text-underline-offset: 0.18em; }
+.lab-band .analysis-block:first-of-type { margin-top: 2.5rem; }
+.lab-band .analysis-block { border-top-color: color-mix(in oklab, var(--color-rule) 75%, var(--color-tungsten)); }
+
+@media (max-width: 899px) {
+  .analysis-controls,
+  .cost-controls { grid-template-columns: 1fr; }
+  .analysis-head { align-items: flex-start; flex-direction: column; gap: 0.75rem; }
+  .legend { justify-content: flex-start; }
+  .method-list article { grid-template-columns: 1fr; gap: 0.5rem; }
+}
+
+@media (max-width: 767px) {
+  .hero .display { max-width: 9ch; }
+  .fit-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fit-strip > div,
+  .fit-strip > div:first-child { padding: 0.75rem; border-bottom: 1px solid var(--color-rule); }
+  .fit-strip > div:nth-child(even) { border-inline-end: 0; }
+  .fit-strip > div:nth-last-child(-n + 2) { border-bottom: 0; }
+}
+
+@media (max-width: 639px) {
+  .analysis-block { margin-top: 2.75rem; }
+  .chart { min-height: 16rem; }
+}
